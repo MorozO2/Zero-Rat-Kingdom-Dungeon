@@ -1,0 +1,4 @@
+﻿  rat_dungeon.cpp
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\rat_dungeon.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\rat_dungeon.cpp(41): warning C4101: 'input': unreferenced local variable
+  rat_dungeon.vcxproj -> C:\Users\vovan\Desktop\zero-rat\Zero-Rat-Kingdom-Dungeon\rat_dungeon\Debug\rat_dungeon.exe
