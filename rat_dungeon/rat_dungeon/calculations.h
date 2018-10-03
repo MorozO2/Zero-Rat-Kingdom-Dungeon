@@ -5,22 +5,33 @@
 #include "calculations.h"
 #include <iostream>
 #pragma warning(disable:4996)
+#define d4 4
 #define d6 6
 #define d8 8
 #define d10 10
 #define d20 20
+#define scale_k 0.4
 
+int roll(int high);
 
-
-
-int attack(int mod)
+bool atck(int mod, int ac)
 {
 	int attack;
 
 	attack = roll(d20) + mod;
-
-	return attack;
+	if (attack >= ac)
+	{
+		printf("The attack hit!");
+		return true;
+	}
+	else
+	{
+		printf("The attack missed!\n");
+		return false;
+	}
+	
 }
+
 int roll(int high)
 {
 	int num;
@@ -31,10 +42,20 @@ int roll(int high)
 	return num;
 }
 
-float enemys_scale(int lvl)
+float enemy_scale(int lvl)
 {
 	float scale;
-	scale = lvl * 0.7;
-	printf("%f", scale);
+	scale = lvl * scale_k;
+	//printf("%.2f", scale);
+	return scale;
 }
+
+int damage(int attack)
+{
+	int damage;
+	damage = attack + roll(d4);
+
+	return damage;
+}
+
 

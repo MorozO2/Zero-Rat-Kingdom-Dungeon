@@ -12,12 +12,6 @@
 #define d10 10
 #define d20 20
 
-struct stats
-{
-	int HP = 20;
-	int AC = 14;
-	int attack = 3;
-}player;
 
 
 int map()
@@ -41,7 +35,7 @@ int map()
 
 		if (input > 0 && input < 7)
 		{
-			encounter = roll(2);
+			encounter = 2;
 		}
 
 		else
@@ -60,6 +54,7 @@ void stats()
 {
 	int i = 0;
 
+	printf("\n");
 	FILE*stats = fopen("c:/users/vovan/desktop/zero-rat/zero-rat-kingdom-dungeon/stats.txt", "r+");
 
 	while (i != EOF)
@@ -68,8 +63,13 @@ void stats()
 		putchar(i);
 	}
 
-	printf("\nHP: %d\n", player.HP);
-	printf("AC: %d\n\n", player.AC);
+	printf("\nHP: %d\n", playerstats.HP);
+	printf("AC: %d\n\n", playerstats.AC);
+}
+
+void inventory()
+{
+
 }
 
 
