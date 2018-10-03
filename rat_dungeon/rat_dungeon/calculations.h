@@ -10,7 +10,7 @@
 #define d8 8
 #define d10 10
 #define d20 20
-#define scale_k 0.4
+#define scale_k 0.5
 
 int roll(int high);
 

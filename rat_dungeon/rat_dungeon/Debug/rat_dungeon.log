@@ -1,9 +1,9 @@
 ﻿  rat_dungeon.cpp
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\calculations.h(48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(46): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\rat_dungeon.cpp(26): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(143): warning C4715: 'item': not all control paths return a value
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(118): warning C4715: 'enemy': not all control paths return a value
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(159): warning C4715: 'item': not all control paths return a value
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(134): warning C4715: 'enemy': not all control paths return a value
   rat_dungeon.vcxproj -> C:\Users\vovan\Desktop\zero-rat\Zero-Rat-Kingdom-Dungeon\rat_dungeon\Debug\rat_dungeon.exe

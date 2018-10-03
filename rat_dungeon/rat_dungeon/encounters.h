@@ -9,10 +9,10 @@
 
 struct enemy
 {
-	int HP = 10;
-	int attack = 1;
+	int HP = 15;
 	int AC = 12;
-}enemystats[4];
+	int attack = 1;
+}enemystats;
 
 struct player
 {
@@ -28,10 +28,11 @@ struct player
 int enemy(int lvl)
 {
 	int encounter = 0;
-	int HP = enemystats->HP;
-	int AC = enemystats->AC;
-	int attack = enemystats->attack;
-	int dmg= 0;
+	int en_HP;
+	int pl_HP;
+	int en_AC;
+	int attack;
+	int dmg = 0;
 	int input;
 	bool hit = false;
 
@@ -39,48 +40,52 @@ int enemy(int lvl)
 	printf("\nYou've encountered an enemy!\n");
 	if (lvl > 1)
 	{
-		enemystats[lvl - 1].HP = enemystats[lvl - 1].HP * enemy_scale(lvl);
-		enemystats[lvl - 1].AC = enemystats[lvl - 1].AC * enemy_scale(lvl);
-		enemystats[lvl - 1].attack = enemystats[lvl - 1].attack * enemy_scale(lvl);
-
-		HP = enemystats[lvl - 1].HP;
-		AC = enemystats[lvl - 1].AC;
-		attack = enemystats[lvl - 1].attack;
-		
-		printf("HP: %d\n", HP);
-		printf("AC: %d\n", AC);
-		printf("Attack: %d\n", attack);
-
-	}
-	else
-	{
-		printf("HP: %d\n", HP);
-	}
+		//SCALES THAT ENEMY STATS IN ACCORDANCE WITH THE LEVEL
+		enemystats.HP = enemystats.HP * enemy_scale(lvl);
+		enemystats.AC = enemystats.AC * enemy_scale(lvl);
+		enemystats.attack = enemystats.attack * enemy_scale(lvl);
 
 	
 
-	while (HP > 0 || playerstats.HP > 0)
+	}
+	//ASSIGNS ENEMY AND PLAYER STATS TO VARIABLES
+	en_HP = enemystats.HP;
+	en_AC = enemystats.AC;
+	attack = enemystats.attack;
+
+	pl_HP = enemystats.HP;
+
+	printf("HP: %d\n", en_HP);
+	printf("AC: %d\n", en_AC);
+	printf("Attack: %d\n", attack);
+
+	
+
+	while (en_HP != 0 && pl_HP != 0)
 	{
+		printf("\n\nEnemy HP: %d\n",en_HP);
+		printf("Your current HP is %d\n", pl_HP);
+
 		printf("\nEnter 1 to attack!\n");
 		printf("Enter 2 to use potion!\n");
-		printf("\nEnemy HP: %d\n", HP);
+		
 
 		scanf("%d", &input);
 		if (input == 1)
 		{
 			//ATTACK VS ENEMY
-			hit = atck(1, AC);
+			hit = atck(1, en_AC);
 			if (hit == true)
 			{
 				dmg = damage(1);
-				HP = HP - dmg;
-				printf("You deal %d damage to the enemy\n", dmg);
+				en_HP = en_HP - dmg;
+				printf("\nYou deal %d damage to the enemy\n", dmg);
 			}
 							
 		}
 		else if (input == 2)
 		{
-			printf("You've used a potion");
+			printf("You've used a potion\n");
 
 		}
 
@@ -89,28 +94,39 @@ int enemy(int lvl)
 			printf("\nError, please enter 1 to attack the enemy!\n");
 		}
 		 //Attack VS PLAYER
-		if (HP > 0)
+		if (en_HP > 0)
 		{
-			printf("The level %d Rat Grunt attacks!\n", lvl);
+			printf("\nThe level %d Rat Grunt attacks!\n", lvl);
 			hit = atck(1, playerstats.AC);
 			if (hit == true)
 			{
 				dmg = damage(1);
-				playerstats.HP = playerstats.HP - dmg;
-				printf("Your current HP is %d\n", playerstats.HP);
+				pl_HP = pl_HP - dmg;
+				
 			}
 		}
+	
+		if (en_HP < 0)
+		{
+			en_HP = 0;
+		}
 
+		if (pl_HP < 0)
+		{
+			pl_HP = 0;
+		}
 	
 	}
+	
 
-	if (HP <= 0 || HP <= (-1))
+	if (en_HP <= 0)
 	{
+		en_HP = 0;
 		printf("You defeated the enemy!\n");
 		return 0;
 	}
 
-	else if (playerstats.HP <= 0 || playerstats.HP <= (-1))
+	else if (pl_HP <= 0)
 	{
 		return 4;
 	}
