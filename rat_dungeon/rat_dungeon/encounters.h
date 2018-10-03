@@ -7,12 +7,6 @@
 #pragma warning(disable:4996)
 #include <time.h>
 
-#define lv1 1
-#define lv2 2
-#define lv3 3
-#define lv4 4
-#define lv5 5
-
 struct
 {
 	int HP = 10;
@@ -28,7 +22,11 @@ int enemy(int lvl)
 	printf("\nYou've encountered an enemy!\n");
 
 	
-	printf("HP: %d", enemystats[0].HP);
+	printf("HP: %d", enemystats[lvl-1].HP);
+	if (lvl > 1)
+	{
+		enemystats[lvl - 1].HP = enemystats[lvl - 1].HP * enemy_scale();
+	}
 
 
 	for (;encounter != 3;)
@@ -40,7 +38,7 @@ int enemy(int lvl)
 		if (input == 1)
 		{
 
-			printf("\nSuccess! You've defeated the enemy!\n");
+			
 
 		}
 		else
@@ -49,7 +47,7 @@ int enemy(int lvl)
 
 		}
 	}
-	return encounter;
+	
 
 }
 
@@ -74,3 +72,4 @@ int item()
 	}
 
 }
+
