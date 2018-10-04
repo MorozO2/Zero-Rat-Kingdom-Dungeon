@@ -39,7 +39,7 @@ int map()
 		if (room > 0 && room < 7)
 		{
 			
-			encounter = 2;
+			encounter = 1;
 			fclose(map);
 			
 		}
@@ -49,12 +49,12 @@ int map()
 			printf("\nThere no such room number. Please enter one of the numbers on the map.\n");
 		}
 
-		rooms[j] = room;
+		/*rooms[j] = room;
 		if (rooms[j] == room)
 		{
 			printf("You've explored rooms: %d", rooms[j]);
 		}
-		j++;
+		j++;*/
 	}
 
 
@@ -76,12 +76,30 @@ void stats()
 	}
 	fclose(stats);
 	printf("\nHP: %d\n", playerstats.HP);
-	printf("AC: %d\n\n", playerstats.AC);
-}
+	printf("AC: %d\n", playerstats.AC);
+	printf("Attack: +%d\n", playerstats.attack);
+	printf("Healing Potions: %d\n", playerstats.potions);
+	printf("stick: %d\n", items.stick);
+	printf("shield: %d\n", items.shield);
+	printf("shirt: %d\n", items.shirt);
 
-void inventory()
-{
 
+	if (playerstats.stick > 0)
+	{
+		printf("Weapon: +%d Twatting Stick\n", playerstats.stick);
+	}
+	
+	if (playerstats.shirt > 0)
+	{
+		printf("Armor: +%d Shirt\n", playerstats.shirt);
+	}
+	
+	if (playerstats.shield > 0)
+	{
+		printf("Shield: +%d Rat Shield\n\n", playerstats.shield);
+	}
+
+	
 }
 
 

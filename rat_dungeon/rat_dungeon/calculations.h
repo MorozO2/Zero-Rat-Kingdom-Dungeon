@@ -46,7 +46,6 @@ float enemy_scale(int lvl)
 {
 	float scale;
 	scale = lvl * scale_k;
-	//printf("%.2f", scale);
 	return scale;
 }
 
