@@ -24,6 +24,7 @@ struct player
 	int stick = 0;
 }playerstats;
 
+void item(int lvl);
 
 int enemy(int lvl)
 {
@@ -44,16 +45,14 @@ int enemy(int lvl)
 		enemystats.HP = enemystats.HP * enemy_scale(lvl);
 		enemystats.AC = enemystats.AC * enemy_scale(lvl);
 		enemystats.attack = enemystats.attack * enemy_scale(lvl);
-
-	
-
 	}
+
 	//ASSIGNS ENEMY AND PLAYER STATS TO VARIABLES
 	en_HP = enemystats.HP;
 	en_AC = enemystats.AC;
 	attack = enemystats.attack;
 
-	pl_HP = enemystats.HP;
+	pl_HP = playerstats.HP;
 
 	printf("HP: %d\n", en_HP);
 	printf("AC: %d\n", en_AC);
@@ -102,6 +101,7 @@ int enemy(int lvl)
 			{
 				dmg = damage(1);
 				pl_HP = pl_HP - dmg;
+				playerstats.HP = pl_HP;
 				
 			}
 		}
@@ -123,6 +123,7 @@ int enemy(int lvl)
 	{
 		en_HP = 0;
 		printf("You defeated the enemy!\n");
+		item(lvl);
 		return 0;
 	}
 
@@ -136,25 +137,13 @@ int enemy(int lvl)
 
 
 
-int item()
+void item(int lvl)
 {
-	int encounter = 1;
 
-	printf("\nYou've got an item!\n");
-
-	for (;encounter != 0;)
-	{
-		printf("\nPlease enter 0 to return to map.\n");
-		scanf("%d", &encounter);
-		if (encounter == 0)
-		{
-			return encounter;
-		}
-		else
-		{
-			printf("\nError: please enter 0 to return to map.\n");
-		}
-	}
+	printf("\nYou've got a potion!\n");
+	printf("\nYou received a +%d Twatting Stick", lvl);
+	printf("\nYou received a +%d shirt", lvl);
+	printf("\nYou received a +%d rat shield", lvl);
 
 }
 
