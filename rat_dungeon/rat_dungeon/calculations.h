@@ -10,14 +10,18 @@
 #define d6 6
 #define d8 8
 #define d10 10
+#define d12 12
 #define d20 20
 #define scale_k 0.5
 
 int roll(int high);
 int atck(int mod, int ac);
-int healing();
-int damage(int attack);
-float enemy_scale(int lvl);
+int healing(int dice);
+int en_damage(int attack);
+int pl_damage(int attack);
+float HP_scale(int lvl);
+float attack_scale(int lvl);
+float AC_scale(int lvl);
 
 int atck(int mod, int ac)
 {
@@ -47,14 +51,37 @@ int roll(int high)
 	return num;
 }
 
-float enemy_scale(int lvl)
+float attack_scale(int lvl)
 {
 	float scale;
-	scale = lvl * scale_k;
+	scale = lvl;
 	return scale;
 }
 
-int damage(int attack)
+float AC_scale(int lvl)
+{
+	float scale;
+	scale = 1 + lvl;
+	return scale;
+}
+
+float HP_scale(int lvl)
+{
+	float scale;
+	scale = roll(d4) + lvl * scale_k;
+	return scale;
+}
+
+
+int pl_damage(int attack)
+{
+	int damage;
+	damage = attack + roll(d6);
+
+	return damage;
+}
+
+int en_damage(int attack)
 {
 	int damage;
 	damage = attack + roll(d4);
@@ -62,11 +89,23 @@ int damage(int attack)
 	return damage;
 }
 
-int healing()
+int healing(int dice)
 {
 	int heal = 0;
-	heal = roll(d8);
-	printf("\nYou've used a potion. It tastes like sewage, but you've regained %d HP\n", heal);
+
+	if (dice == d8)
+	{
+		heal = roll(d8)+2;
+		printf("\nYou've used a Rat Potion. It tastes like sewage, but you've regained %d HP.\n", heal);
+		
+	}
+
+	if (dice == d6)
+	{
+		heal = roll(d6)+2;
+		printf("\nYou had a small rest and regained %d HP\n", heal);
+	}
+	
 	return heal;
 	
 }

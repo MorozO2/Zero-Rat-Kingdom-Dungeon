@@ -7,15 +7,15 @@
 #include <time.h>
 #pragma warning(disable:4996)
 
-int map();
+int map(int lvl, int prev_lvl);
 void stats();
-void item(int lvl);
+void item(int lvl, int prev_lvl);
 
 
-int map()
+int map(int lvl, int prev_lvl)
 {
-	int rooms[6];
-	int room;
+	int rested = 0;
+	int input;
 	int encounter = 0;
 	int i = 0;
 	int j = 0;
@@ -28,30 +28,46 @@ int map()
 		putchar(i);
 	}
 
+	if (lvl > 1 && lvl > prev_lvl)
+	{
+		rested = 0;
+	}
+
 	while (encounter != 1 && encounter != 2)
 	{
-		printf("\n\nWhich room would you like to explore? (select a number from the map)\n");
-		scanf("%d", &room);
 
-		if (room > 0 && room < 7)
+		
+		printf("\n\nEnter 1 to explore a room\n");
+
+		printf("\nEnter 2 to take a short rest\n");
+
+		scanf("%d", &input);
+
+		if (input == 1)
 		{
 			
 			encounter = 1;
 			fclose(map);
 			
 		}
-
-		else
+		else if (input == 2 && rested == 0)
 		{
-			printf("\nThere no such room number. Please enter one of the numbers on the map.\n");
+			
+			playerstats.temp_HP = playerstats.temp_HP + healing(d6);
+
+			if (playerstats.temp_HP > playerstats.max_HP)
+			{
+				playerstats.temp_HP = playerstats.max_HP;
+			}
+
+			printf("\nYour current HP is %d/%d\n", playerstats.temp_HP, playerstats.max_HP);
+			rested = 1;
+		}
+		else if(rested == 1)
+		{
+			printf("\nYou've already rested.\n");
 		}
 
-		/*rooms[j] = room;
-		if (rooms[j] == room)
-		{
-			printf("You've explored rooms: %d", rooms[j]);
-		}
-		j++;*/
 	}
 
 
@@ -101,18 +117,20 @@ void stats()
 }
 
 //FUNCTION FOR GIVING PLAYER ITEMS
-void item(int lvl)
+void item(int lvl, int prev_lvl)
 {
 	int potion = 0;
 	int item = 0;
 	int input = 0;
+
 	if (lvl > items.c_level)
 	{
 		items.stick = 0;
 		items.shirt = 0;
 		items.shield = 0;
+		items.c_level = lvl;
 	}
-	items.c_level = lvl;
+	
 
 	//ROLLS TO SEE IF PLAYER GETS A POTION
 	potion = roll(2);
@@ -128,7 +146,7 @@ void item(int lvl)
 	{
 		playerstats.stick = playerstats.stick + 1;
 		printf("\nYou received a +%d Twatting Stick\n\n", lvl);
-		playerstats.attack = playerstats.attack + playerstats.stick;
+		playerstats.attack = playerstats.attack + 2;
 		items.stick = 1;
 	}
 
@@ -136,7 +154,7 @@ void item(int lvl)
 	{
 		playerstats.shirt = playerstats.shirt + 1;
 		printf("\nYou received a +%d Shirt", lvl);
-		playerstats.max_HP = playerstats.max_HP + playerstats.shirt * 2;
+		playerstats.max_HP = playerstats.max_HP + 2;
 		items.shirt = 1;
 	}
 
@@ -145,7 +163,7 @@ void item(int lvl)
 
 		playerstats.shield = playerstats.shield + 1;
 		printf("\nYou received a +%d Rat Shield", lvl);
-		playerstats.AC = playerstats.AC + playerstats.shield;
+		playerstats.AC = playerstats.AC + 1;
 		items.shield = 1;
 	}
 
