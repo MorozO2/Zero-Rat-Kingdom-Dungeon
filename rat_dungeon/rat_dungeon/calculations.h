@@ -5,6 +5,7 @@
 #include "calculations.h"
 #include <iostream>
 #pragma warning(disable:4996)
+#define d2 2
 #define d4 4
 #define d6 6
 #define d8 8
@@ -13,8 +14,12 @@
 #define scale_k 0.5
 
 int roll(int high);
+int atck(int mod, int ac);
+int healing();
+int damage(int attack);
+float enemy_scale(int lvl);
 
-bool atck(int mod, int ac)
+int atck(int mod, int ac)
 {
 	int attack;
 
@@ -22,12 +27,12 @@ bool atck(int mod, int ac)
 	if (attack >= ac)
 	{
 		printf("The attack hit!");
-		return true;
+		return 1;
 	}
 	else
 	{
 		printf("The attack missed!\n");
-		return false;
+		return 0;
 	}
 	
 }
@@ -57,4 +62,12 @@ int damage(int attack)
 	return damage;
 }
 
+int healing()
+{
+	int heal = 0;
+	heal = roll(d8);
+	printf("\nYou've used a potion. It tastes like sewage, but you've regained %d HP\n", heal);
+	return heal;
+	
+}
 

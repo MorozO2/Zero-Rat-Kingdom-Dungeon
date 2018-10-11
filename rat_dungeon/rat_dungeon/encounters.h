@@ -7,6 +7,9 @@
 #pragma warning(disable:4996)
 #include <time.h>
 
+void item(int lvl);
+int combat(int lvl);
+
 struct enemy
 {
 	int HP = 15;
@@ -16,30 +19,49 @@ struct enemy
 
 struct player
 {
-	
 	int potions = 0;
 	int shirt = 0;
 	int stick = 0;
 	int shield = 0;
-	int HP = 20 + shirt;
-	int AC = 14 + shield;
-	int attack = 1 + stick;
+	int max_HP = 20;
+	int temp_HP = 20;
+	int AC = 14;
+	int attack = 1;
 }playerstats;
 
 struct items
 {
-	int	c_level = 0;
+	int	c_level = 1;
 	int shirt = 0; 
 	int shield = 0;
 	int stick = 0;
 }items;
 
-void item(int lvl);
 
-//MAIN COMBAT FUNCTION
-int enemy(int lvl)
+
+//FUNCTION FOR DETERMINING THE ENCOUNTER
+int enc(int lvl)
 {
 	int encounter = 0;
+
+	encounter = roll(10);
+	if (encounter >= 1 && encounter <= 8)
+	{
+		encounter = combat(lvl);
+	}
+	else if (encounter >= 9)
+	{
+		printf("\nThere is no enemy in this room, however you do find some rat treasure!\n");
+		item(lvl);
+		encounter = 1;
+	}
+
+	return encounter;
+}
+	
+
+int combat(int lvl)
+{
 	int en_HP;
 	int pl_HP;
 	int en_AC;
@@ -47,11 +69,17 @@ int enemy(int lvl)
 	int dmg = 0;
 	int input;
 	int i = 0;
-	bool hit = false;
+	int hit = 0;
 
 	FILE*cmenu = fopen("c:/users/vovan/desktop/zero-rat/zero-rat-kingdom-dungeon/combat.txt", "r");
 
-	printf("\nYou've encountered an enemy!\n");
+	while (i != EOF)
+	{
+		i = fgetc(cmenu);
+		putchar(i);
+	}
+	i = 0;
+
 	if (lvl > 1)
 	{
 		//SCALES THAT ENEMY STATS IN ACCORDANCE WITH THE LEVEL
@@ -65,47 +93,64 @@ int enemy(int lvl)
 	en_AC = enemystats.AC;
 	attack = enemystats.attack;
 
-	pl_HP = playerstats.HP;
+	pl_HP = playerstats.temp_HP;
 
-	printf("HP: %d\n", en_HP);
+	printf("\nHP: %d\n", en_HP);
 	printf("AC: %d\n", en_AC);
 	printf("Attack: %d\n", attack);
 
-	
 
-	while (en_HP != 0 && pl_HP != 0)
+
+	while (en_HP > 0 && pl_HP > 0)
 	{
-		printf("\n\nEnemy HP: %d\n",en_HP);
-		printf("Your current HP is %d\n", pl_HP);
+		printf("\n\nEnemy HP: %d/%d\n", en_HP, enemystats.HP);
+		printf("Your current HP is %d/%d\n", pl_HP, playerstats.max_HP);
+		printf("Potions\n", playerstats.potions);
 
-		while (i != EOF)
-		{
-			i = fgetc(cmenu);
-			putchar(i);
-		}
-
+		printf("\n**Enter 1 to attack**\n", pl_HP);
+		printf("\n**Enter 2 to drink a health potion**\n", pl_HP);
 		
 
 		printf("\n");
 		scanf("%d", &input);
 		printf("\n");
 
-		i = 0;
+		//ATTACK VS ENEMY
 		if (input == 1)
 		{
-			//ATTACK VS ENEMY
-			hit = atck(1, en_AC);
-			if (hit == true)
+
+			//CHECK WHETHER ATTACK HITS OR NOT
+			hit = atck(playerstats.attack, en_AC);
+			//IF ATTACK HITS, ROLLS DAMAGE
+			if (hit == 1)
 			{
 				dmg = damage(10);
-				en_HP = en_HP - dmg;
 				printf("\nYou deal %d damage to the enemy\n", dmg);
+				en_HP = en_HP - dmg;	
 			}
-							
+
 		}
+		//DRINK POTION
 		else if (input == 2)
 		{
-			printf("You've used a potion\n");
+			if (playerstats.potions != 0)
+			{
+				//REMOVES ONE POTION FROM THE INVENTORY AND HEALS THE PLAYER
+				playerstats.potions = playerstats.potions - 1;
+				pl_HP = pl_HP + healing();
+				playerstats.temp_HP = pl_HP;
+				
+				//CHECK THAT THE HP VALUE DOESN'T GO OVER MAXIMUM
+				if (pl_HP > playerstats.max_HP)
+				{
+					pl_HP = playerstats.max_HP;
+				}
+
+			}
+			else
+			{
+				printf("You don't have any potions!");
+			}
 
 		}
 
@@ -113,7 +158,8 @@ int enemy(int lvl)
 		{
 			printf("\nError, please enter 1 to attack the enemy!\n");
 		}
-		 //Attack VS PLAYER
+
+		//ATTACK VS PLAYER
 		if (en_HP > 0)
 		{
 			printf("\nThe level %d Rat Grunt attacks!\n", lvl);
@@ -121,90 +167,39 @@ int enemy(int lvl)
 			if (hit == true)
 			{
 				dmg = damage(1);
+				printf("\nThe gross rat dealt %d damage to you!\n", dmg);
 				pl_HP = pl_HP - dmg;
-				playerstats.HP = pl_HP;
+				playerstats.temp_HP = pl_HP;
+				
 				
 			}
 		}
-	
-		if (en_HP < 0)
+
+		if (en_HP <= 0)
 		{
 			en_HP = 0;
 		}
 
-		if (pl_HP < 0)
+		else if (pl_HP <= 0)
 		{
 			pl_HP = 0;
+			playerstats.temp_HP = pl_HP;
 		}
-	
+		
 	}
-	
 
-	if (en_HP <= 0)
+
+	if (en_HP == 0)
 	{
-		en_HP = 0;
 		printf("\nYou defeated the enemy!\n");
 		item(lvl);
 		return 0;
 	}
 
-	else if (pl_HP <= 0)
+	else if (pl_HP == 0)
 	{
-		return 4;
-	}
-
-}
-	
-
-
-
-void item(int lvl)
-{
-	int potion = 0;
-	int item = 0;
-	
-	if (lvl > items.c_level)
-	{
-		items.stick = 0;
-		items.shirt = 0;
-		items.shield = 0;
-	}
-	items.c_level = lvl;
 		
-	potion = roll(2);
-	if (potion == 1)
-	{
-		playerstats.potions = playerstats.potions + 1;
-		printf("\nYou've got a potion!\n");		
-	}
-
-	if (roll(2) == 1)
-	{
-		item = roll(3);
-
-		if (item == 1 && items.stick == 0)
-		{
-			playerstats.stick = playerstats.stick + 1;
-			printf("\nYou received a +%d Twatting Stick\n\n", lvl);
-			items.stick = 1;
-		}
-
-		else if (item == 2 && items.shirt == 0)
-		{
-
-			playerstats.shirt = playerstats.shirt + 1;
-			printf("\nYou received a +%d Shirt", lvl);
-			items.shirt = 1;
-
-		}
-
-		else if (item == 3 && items.shield == 0)
-		{
-
-			playerstats.shield = playerstats.shield + 1;
-			printf("\nYou received a +%d Rat Shield", lvl);
-			items.shield = 1;
-		}
+		return 2;
 	}
 }
 
