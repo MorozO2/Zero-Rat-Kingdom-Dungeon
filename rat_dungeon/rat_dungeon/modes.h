@@ -11,14 +11,13 @@ int map(int lvl);
 void stats();
 void item(int lvl);
 
-
+//FUNCTION DISPLAYS MAP AND ASK PLAYER WHAT HE WANTS TO DO
 int map(int lvl)
 {
 	int rested = 0;
 	int input;
 	int encounter = 0;
 	int i = 0;
-	int j = 0;
 	FILE*map = fopen("c:/users/vovan/desktop/zero-rat/zero-rat-kingdom-dungeon/map.txt", "r+");
 
 	//DISPLAYS THE MAP FOR TEXT FILE TO SCREEN
@@ -28,12 +27,14 @@ int map(int lvl)
 		putchar(i);
 	}
 
+	//MAKES SURE THAT THE PLAYER CAN REST MORE THAN ONCE PER ROOM CLEAR
 	if (lvl > items.c_level)
 	{
 		rested = 0;
-		items.c_level = lvl;
+		//items.c_level = lvl;
 	}
 
+	//ASKS PLAYER TO INPUT EITHER 1 OR 2 TO DETERMINE NEXT ACTION
 	while (encounter != 1 && encounter != 2)
 	{
 
@@ -43,14 +44,16 @@ int map(int lvl)
 		printf("\nEnter 2 to take a short rest\n");
 
 		scanf("%d", &input);
-
+		//
 		if (input == 1)
 		{
 			
-			encounter = 1;
-			fclose(map);
+			encounter = input;
+			return encounter;
+			
 			
 		}
+
 		else if (input == 2 && rested == 0)
 		{
 			
@@ -70,12 +73,10 @@ int map(int lvl)
 		}
 
 	}
-
-
-	return encounter;
-
+	fclose(map);
 }
 
+//FUCNTION PRINTS CHARATER STATS TO THE SCREEN
 void stats()
 {
 	int i = 0;

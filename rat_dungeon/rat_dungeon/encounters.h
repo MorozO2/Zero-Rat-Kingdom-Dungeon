@@ -117,8 +117,8 @@ int combat(int lvl)
 		printf("Your current HP is %d/%d\n", pl_HP, playerstats.max_HP);
 		printf("Potions: %d\n", playerstats.potions);
 
-		printf("\n**Enter 1 to attack**\n", pl_HP);
-		printf("\n**Enter 2 to drink a health potion**\n", pl_HP);
+		printf("\n**Enter 1 to attack**\n");
+		printf("\n**Enter 2 to drink a health potion**\n");
 		
 
 		printf("\n");
@@ -264,7 +264,7 @@ int boss()
 			
 		}
 
-		else if (input = 2)
+		else if (input == 2)
 		{
 			if (playerstats.potions != 0)
 			{
