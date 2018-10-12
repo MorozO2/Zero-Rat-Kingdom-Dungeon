@@ -105,6 +105,12 @@ int healing(int dice)
 		heal = roll(d6)+2;
 		printf("\nYou had a small rest and regained %d HP\n", heal);
 	}
+
+	if (dice == d12)
+	{
+		heal = 2*roll(d12);
+		printf("\nBlumpy focuses his energy to turn back time and restore himself. He regains %d HP", heal);
+	}
 	
 	return heal;
 	

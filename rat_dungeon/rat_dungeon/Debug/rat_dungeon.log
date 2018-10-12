@@ -2,14 +2,14 @@
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\calculations.h(57): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\calculations.h(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\calculations.h(71): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(86): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(88): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(110): warning C4474: 'printf' : too many arguments passed for format string
-  c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(110): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(111): warning C4474: 'printf' : too many arguments passed for format string
-  c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(111): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(167): warning C4805: '==': unsafe mix of type 'int' and type 'bool' in operation
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(96): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(120): warning C4474: 'printf' : too many arguments passed for format string
+  c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(120): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(121): warning C4474: 'printf' : too many arguments passed for format string
+  c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(121): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\rat_dungeon.cpp(32): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(204): warning C4715: 'combat': not all control paths return a value
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(214): warning C4715: 'combat': not all control paths return a value
+c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(337): warning C4715: 'boss': not all control paths return a value
   rat_dungeon.vcxproj -> C:\Users\vovan\Desktop\zero-rat\Zero-Rat-Kingdom-Dungeon\rat_dungeon\Debug\rat_dungeon.exe

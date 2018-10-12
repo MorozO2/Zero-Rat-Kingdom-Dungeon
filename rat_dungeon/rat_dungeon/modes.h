@@ -7,12 +7,12 @@
 #include <time.h>
 #pragma warning(disable:4996)
 
-int map(int lvl, int prev_lvl);
+int map(int lvl);
 void stats();
-void item(int lvl, int prev_lvl);
+void item(int lvl);
 
 
-int map(int lvl, int prev_lvl)
+int map(int lvl)
 {
 	int rested = 0;
 	int input;
@@ -28,9 +28,10 @@ int map(int lvl, int prev_lvl)
 		putchar(i);
 	}
 
-	if (lvl > 1 && lvl > prev_lvl)
+	if (lvl > items.c_level)
 	{
 		rested = 0;
+		items.c_level = lvl;
 	}
 
 	while (encounter != 1 && encounter != 2)
@@ -117,7 +118,7 @@ void stats()
 }
 
 //FUNCTION FOR GIVING PLAYER ITEMS
-void item(int lvl, int prev_lvl)
+void item(int lvl)
 {
 	int potion = 0;
 	int item = 0;
