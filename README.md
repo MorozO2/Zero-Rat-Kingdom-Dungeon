@@ -4,3 +4,4 @@ Text-based command line game that has the player exploring a dungeon and fightin
 To play game go to rat_dungeon/Release/rat_dungeon_exe
 
 The game has some amount of RNG, so please be patient if you don't succeed on your first try.
+NOTE: BEST PLAYED IN FULL-SCREEN (to see all the text)
