@@ -70,7 +70,7 @@ int AC_scale(int lvl)
 float HP_scale(int lvl)
 {
 	float scale;
-	scale = roll(d8) + lvl;
+	scale = roll(d4) + lvl;
 	return scale;
 }
 
