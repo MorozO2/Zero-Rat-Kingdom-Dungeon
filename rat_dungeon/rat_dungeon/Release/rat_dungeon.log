@@ -1,5 +1,4 @@
-﻿  pch.cpp
-  rat_dungeon.cpp
+﻿  rat_dungeon.cpp
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\calculations.h(57): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\calculations.h(58): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\calculations.h(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
@@ -9,8 +8,9 @@ c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\rat_dungeon.cpp(34): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Generating code
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\modes.h(73): warning C4715: 'map': not all control paths return a value
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(336): warning C4715: 'boss': not all control paths return a value
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(211): warning C4715: 'combat': not all control paths return a value
-  All 30 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  4 of 30 functions (13.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   rat_dungeon.vcxproj -> C:\Users\vovan\Desktop\zero-rat\Zero-Rat-Kingdom-Dungeon\rat_dungeon\Release\rat_dungeon.exe

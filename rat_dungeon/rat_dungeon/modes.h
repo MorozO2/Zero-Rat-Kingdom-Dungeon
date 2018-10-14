@@ -18,7 +18,7 @@ int map(int lvl)
 	int input;
 	int encounter = 0;
 	int i = 0;
-	FILE*map = fopen("c:/users/vovan/desktop/zero-rat/zero-rat-kingdom-dungeon/map.txt", "r");
+	FILE*map = fopen("c:/users/vovan/desktop/zero-rat/zero-rat-kingdom-dungeon/rat_dungeon/rat_dungeon/txtFiles/map.txt", "r");
 
 	//DISPLAYS THE MAP FOR TEXT FILE TO SCREEN
 	while (i != EOF)
@@ -79,7 +79,7 @@ void stats()
 
 	printf("\n");
 	//PRINTS OUT PLAYER STATS
-	FILE*stats = fopen("c:/users/vovan/desktop/zero-rat/zero-rat-kingdom-dungeon/stats.txt", "r+");
+	FILE*stats = fopen("c:/users/vovan/desktop/zero-rat/zero-rat-kingdom-dungeon/rat_dungeon/rat_dungeon/txtFiles/stats.txt", "r+");
 	while (i != EOF)
 	{
 		i = fgetc(stats);
