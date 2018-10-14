@@ -7,10 +7,8 @@ c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(103): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\rat_dungeon.cpp(34): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Generating code
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\modes.h(73): warning C4715: 'map': not all control paths return a value
-c:\users\vovan\desktop\zero-rat\zero-rat-kingdom-dungeon\rat_dungeon\rat_dungeon\encounters.h(211): warning C4715: 'combat': not all control paths return a value
-  4 of 30 functions (13.3%) were compiled, the rest were copied from previous compilation.
+  1 of 30 functions ( 3.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   rat_dungeon.vcxproj -> C:\Users\vovan\Desktop\zero-rat\Zero-Rat-Kingdom-Dungeon\rat_dungeon\Release\rat_dungeon.exe

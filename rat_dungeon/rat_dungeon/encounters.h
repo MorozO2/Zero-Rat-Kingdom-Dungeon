@@ -88,7 +88,7 @@ int combat(int lvl)
 	int i = 0;
 	int hit = 0;
 
-	FILE*cmenu = fopen("c:/users/vovan/desktop/zero-rat/zero-rat-kingdom-dungeon/rat_dungeon/rat_dungeon/txtFiles/combat.txt", "r");
+	FILE*cmenu = fopen("combat.txt", "r");
 
 	while (i != EOF)
 	{
