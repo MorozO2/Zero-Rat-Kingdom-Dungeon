@@ -12,7 +12,6 @@
 #define d10 10
 #define d12 12
 #define d20 20
-#define scale_k 0.5
 
 int atck(int mod, int ac);
 int roll(int high);
@@ -21,7 +20,7 @@ float HP_scale(int lvl);
 int AC_scale(int lvl);
 int pl_damage(int attack);
 int en_damage(int attack);
-int healing(int dice);
+int healing(int dice, int lvl);
 
 
 //ATTACK FUCNTION THAT DETERMINE WHETHER OR NOT THE PLAYER/ENEMY HIT ITS TARGET
@@ -32,15 +31,14 @@ int atck(int mod, int ac)
 	attack = roll(d20) + mod;
 	if (attack >= ac)
 	{
-		printf("The attack hit!");
+		printf("\nThe attack hit!\n");
 		return 1;
 	}
 	else
 	{
-		printf("The attack missed!\n");
+		printf("\nThe attack missed!\n");
 		return 0;
 	}
-	
 }
 
 //VIRTUAL DICE ROLLING FUNCTION THAT TAKE IN THE SIZE OF THE DICE
@@ -48,9 +46,7 @@ int roll(int high)
 {
 	int num;
 	int low = 1;
-
 	num = (rand() % (high - low + 1)) + low;
-
 	return num;
 }
 
@@ -74,7 +70,7 @@ int AC_scale(int lvl)
 float HP_scale(int lvl)
 {
 	float scale;
-	scale = roll(d4) + lvl * scale_k;
+	scale = roll(d8) + lvl;
 	return scale;
 }
 
@@ -97,21 +93,21 @@ int en_damage(int attack)
 }
 
 //FUCNTION THAT DETERMINES HOW MUCH HP TO HEAL
-int healing(int dice)
+int healing(int dice, int lvl)
 {
 	int heal = 0;
 
 	//HEALS PLAYER (IF 8-SIDED DIE VALUE IS PASSED)
 	if (dice == d8)
 	{
-		heal = roll(d8)+2;
+		heal = roll(d8)+lvl * 2;
 		printf("\nYou've used a Rat Potion. It tastes like sewage, but you've regained %d HP.\n", heal);
 		
 	}
 	//HEALS ENEMY (IF 6-SIDED DIE VALUE IS PASSED)
 	if (dice == d6)
 	{
-		heal = roll(d6)+2;
+		heal = roll(d6)+lvl*2;
 		printf("\nYou had a small rest and regained %d HP\n", heal);
 	}
 	//HEALS BOSS (IF 12-SIDED DIE VALUE IS PASSED)
@@ -120,8 +116,6 @@ int healing(int dice)
 		heal = 2*roll(d12);
 		printf("\nBlumpy focuses his energy to turn back time and restore himself. He regains %d HP", heal);
 	}
-	
 	return heal;
-	
 }
 
